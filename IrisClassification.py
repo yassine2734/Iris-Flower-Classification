@@ -63,4 +63,9 @@ accuracy_score = accuracy_score(Y_test, predictions)
 # classification report 
 print(classification_report(Y_test, predictions))
 
+# Model Testing
+X_new = np.array([[4.6,3.2,1.4,0.2], [5.8,2.8,5.1,2.4], [6.1,3.0,4.6,1.4]])  # Expected result -> [Iris-setosa, Iris-virginica, Iris-versicolor]
 
+
+predction = svm.predict(X_new)
+print("Prediction of species : {}".format(predction)) # result =  ['Iris-setosa' 'Iris-virginica' 'Iris-versicolor']
