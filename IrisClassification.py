@@ -3,6 +3,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.svm import SVC
+from sklearn.metrics import accuracy_score
 
 columns = ['Sepal length', 'Sepal width', 'Petal length', 'Petal width', 'Class_labels']
 df = pd.read_csv('iris.data', names = columns)
@@ -37,5 +40,13 @@ plt.title('Average of each feature for different classes')
 plt.ylabel('Average value')
 plt.xlabel('Class Labels')
 plt.legend(title='Features')
-plt.show()
+# plt.show()
 ''' Here we can clearly confirm that Virginica is the longest and Setosa is the shortest '''
+
+# Model training 
+''' With train_test_split we will split the data into : - Training dataset
+                                                        - Testing dataset
+'''
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2) # I kept 20% of the dataset to the test and evaluation
+svm = SVC()
+svm.fit(X_train, Y_train)
