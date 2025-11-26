@@ -6,6 +6,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
+from sklearn.metrics import classification_report
 
 columns = ['Sepal length', 'Sepal width', 'Petal length', 'Petal width', 'Class_labels']
 df = pd.read_csv('iris.data', names = columns)
@@ -50,3 +51,16 @@ plt.legend(title='Features')
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size = 0.2) # I kept 20% of the dataset to the test and evaluation
 svm = SVC()
 svm.fit(X_train, Y_train)
+
+
+# Model evaluation 
+predictions = svm.predict(X_test) # Prediction from the test dataset
+
+# Calculating the accuracy score of the predicted classes 
+accuracy_score = accuracy_score(Y_test, predictions) 
+
+
+# classification report 
+print(classification_report(Y_test, predictions))
+
+
